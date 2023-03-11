@@ -9,7 +9,7 @@
                     <a class="btn btn-success mb-3" href="{{ route("tasks.index") }}">Grįžti į bendrą užduočių sąrašą</a>
 
                     <div class="card">
-                        <div class="card-header">Nauja užduotis</div>
+                        <div class="card-header">Redaguoti užduotį</div>
 
                             <div class="card-body">
 
