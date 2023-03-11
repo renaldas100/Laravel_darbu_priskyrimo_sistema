@@ -1,6 +1,6 @@
 # Darbų priskyrimo sistema
 
-Naudotos technologijos LARAVEL
+Naudotos technologijos: LARAVEL
 
 Sukurta sistemą kuri yra skirta darbuotojams, įmonėje vykdomiems darbams ir paskirstymui saugoti.
 Sudarytos trys lentelės:  
