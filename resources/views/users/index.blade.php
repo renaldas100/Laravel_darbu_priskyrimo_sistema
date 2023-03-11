@@ -31,7 +31,7 @@
                                         <td class="col-md-9">
                                             <div class="d-flex">
                                             @foreach($user->pictures as $picture)
-                                             <div class="d-flex flex-column align-items-center">
+                                             <div class="d-flex flex-column align-items-center mx-2">
                                                <img src="{{ asset("/storage/users/".$picture->name) }}" style="height: 100px">
                                                 <a>
                                                     <form method="post" action="{{ route('pictures.destroy', $picture->id) }}">
