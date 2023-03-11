@@ -1,0 +1,15 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.deleteButton{
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    margin: 5px;
+}
