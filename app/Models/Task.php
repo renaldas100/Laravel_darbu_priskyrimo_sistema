@@ -12,9 +12,9 @@ class Task extends Model
 //    public $date=['date'];
 
 
-//    protected $casts = [
-//        'date' => 'datetime',
-//    ];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
 
     public function users(){

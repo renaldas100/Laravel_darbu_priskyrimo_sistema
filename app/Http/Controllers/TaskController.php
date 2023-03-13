@@ -6,19 +6,34 @@ use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
+    public function __construct(){
+        $this->authorizeResource(User::class, 'user');
+    }
+
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(User $user)
     {
-//        $task=Task::find(2);
-//        dd($task);
 
+        $user=Auth::user();
+//        dd($user->tasks);
+//        $tasks=$user->tasks;
+//        $tasks=Task::all();
+//        dd($tasks);
+        if(Gate::allows('viewTasksByUserType')){
+            $tasks=Task::all();
+        }else{
+            $tasks=$user->tasks;
+        }
         return view("tasks.index",[
-            'tasks'=>Task::all()
+            'tasks'=>$tasks
         ]);
     }
 

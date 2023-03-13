@@ -20,10 +20,14 @@ Route::get('/', function () {
     return redirect()->route("tasks.index");
 });
 
-Route::resource("tasks", TaskController::class);
+Route::resource("tasks", TaskController::class)->middleware('auth');
 Route::get('tasks/{id}/deleteUser/{userId}',[TaskController::class,"deleteUser"])->name('tasks.deleteUser');
 
 Route::get('/users/index',[UserController::class,'index'])->name('users.index');
+Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('users.edit');
+Route::put('/users/{id}/update',[UserController::class,'update'])->name('users.update');
+Route::post('/users/{id}/destroy',[UserController::class,'destroy'])->name('users.destroy');
+
 
 Route::get('/pictures/{id}/addPicture',[PictureController::class,'addPicture'])->name('pictures.addPicture');
 Route::resource("pictures", PictureController::class)->except(['store']);
