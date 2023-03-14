@@ -64,6 +64,12 @@
                             </table>
                         </div>
                     </div>
+                    <div class="my-2">
+                       Iš viso užduočių yra: {{ $tasksUser }}
+                    </div>
+                    <div class="my-2">
+                        {{ $tasks->links() }}
+                    </div>
                 </div>
             </div>
         </div>

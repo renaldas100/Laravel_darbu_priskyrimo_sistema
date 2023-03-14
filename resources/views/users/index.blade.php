@@ -69,6 +69,12 @@
                             </table>
                         </div>
                     </div>
+                    <div class="my-2">
+                        Iš viso vartotojų yra: {{ $usersCount }}
+                    </div>
+                    <div class="my-2">
+                        {{ $users->links() }}
+                    </div>
                 </div>
             </div>
         </div>

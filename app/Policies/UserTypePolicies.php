@@ -19,6 +19,7 @@ class UserTypePolicies
 
     public function viewTasksByUserType(User $user){
         return $user=Auth::user()->admin==1;
+//        return true;
 
     }
 

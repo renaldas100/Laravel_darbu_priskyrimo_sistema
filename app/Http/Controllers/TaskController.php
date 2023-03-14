@@ -22,18 +22,25 @@ class TaskController extends Controller
     public function index(User $user)
     {
 
+
         $user=Auth::user();
 //        dd($user->tasks);
 //        $tasks=$user->tasks;
 //        $tasks=Task::all();
 //        dd($tasks);
         if(Gate::allows('viewTasksByUserType')){
-            $tasks=Task::all();
+//            $tasksAll = Task::all();
+
+            $tasksAll = Task::query();
+            $tasks = $tasksAll->paginate(5);
+            $tasksUser=$tasksAll;
         }else{
-            $tasks=$user->tasks;
+            $tasksUser=$user->tasks();
+            $tasks=$tasksUser->paginate(5);
         }
         return view("tasks.index",[
-            'tasks'=>$tasks
+            'tasks'=>$tasks,
+            'tasksUser'=>$tasksUser->count(),
         ]);
     }
 
