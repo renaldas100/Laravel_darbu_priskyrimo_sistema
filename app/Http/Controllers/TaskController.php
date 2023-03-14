@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
-    public function __construct(){
-        $this->authorizeResource(User::class, 'user');
-    }
+//    public function __construct(){
+//        $this->authorizeResource(User::class, 'user');
+//    }
 
 
     /**
@@ -31,9 +31,8 @@ class TaskController extends Controller
         if(Gate::allows('viewTasksByUserType')){
 //            $tasksAll = Task::all();
 
-            $tasksAll = Task::query();
-            $tasks = $tasksAll->paginate(5);
-            $tasksUser=$tasksAll;
+            $tasksUser = Task::query();
+            $tasks = $tasksUser->paginate(5);
         }else{
             $tasksUser=$user->tasks();
             $tasks=$tasksUser->paginate(5);
