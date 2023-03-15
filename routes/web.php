@@ -3,6 +3,7 @@
 use App\Http\Controllers\PictureController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,11 @@ Route::get('/pictures/{id}/addPicture',[PictureController::class,'addPicture'])-
 Route::resource("pictures", PictureController::class)->except(['store']);
 Route::post('/pictures/{id}/store', [PictureController::class, 'store'])->name('pictures.store');
 
-
+Route::get('/testemail',function (){
+   Mail::send(['text'=>'email.test'],[],function ($message){
+       $message->to("renaldas0119@gmail.com")->subject("Testinis laiškas")->from("bit@poligonas.lt");
+   });
+});
 
 Auth::routes();
 

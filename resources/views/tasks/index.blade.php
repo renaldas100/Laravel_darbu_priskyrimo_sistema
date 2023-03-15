@@ -17,8 +17,6 @@
                                 <a href="{{ route("tasks.create") }}" class="btn btn-success float-end">Įtraukti naują užduotį</a>
                             </div>
                             <hr>
-
-
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -65,7 +63,7 @@
                         </div>
                     </div>
                     <div class="my-2">
-                       Iš viso užduočių yra: {{ $tasksUser }}
+                        Iš viso užduočių yra: {{ $tasks->total() }}
                     </div>
                     <div class="my-2">
                         {{ $tasks->links() }}

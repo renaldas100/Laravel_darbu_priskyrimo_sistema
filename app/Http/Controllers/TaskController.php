@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddTask;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
@@ -29,17 +30,12 @@ class TaskController extends Controller
 //        $tasks=Task::all();
 //        dd($tasks);
         if(Gate::allows('viewTasksByUserType')){
-//            $tasksAll = Task::all();
-
-            $tasksUser = Task::query();
-            $tasks = $tasksUser->paginate(5);
+            $tasks=Task::paginate(5);
         }else{
-            $tasksUser=$user->tasks();
-            $tasks=$tasksUser->paginate(5);
+            $tasks=$user->tasks()->paginate(5);
         }
         return view("tasks.index",[
             'tasks'=>$tasks,
-            'tasksUser'=>$tasksUser->count(),
         ]);
     }
 
@@ -68,6 +64,8 @@ class TaskController extends Controller
 
         $task->users()->attach($request->user_id);
         $task->save();
+        $user=User::find($request->user_id);
+        AddTask::dispatch($task, $user);
 //        Task::create($request->all());
         return redirect()->route("tasks.index");
     }

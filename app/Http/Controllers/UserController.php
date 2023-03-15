@@ -11,14 +11,10 @@ class UserController extends Controller
 {
     public function index(){
 
-        $usersAll=User::query();
-//        $users=User::paginate(2);
-        $users=$usersAll->paginate(2);
-        $usersCount=$usersAll->count();
+        $users=User::paginate(2);
 
         return view('users.index',[
             'users'=>$users,
-            'usersCount'=>$usersCount
         ]);
 
     }

@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="my-2">
-                        Iš viso vartotojų yra: {{ $usersCount }}
+                        Iš viso vartotojų yra: {{ $users->total() }}
                     </div>
                     <div class="my-2">
                         {{ $users->links() }}
